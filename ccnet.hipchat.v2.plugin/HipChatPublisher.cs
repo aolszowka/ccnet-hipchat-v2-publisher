@@ -29,10 +29,11 @@ namespace ccnet.hipchat.v2.plugin
         public string AuthToken { get; set; }
 
         /// <summary>
-        /// Gets or sets the Room Name to receive notification.
+        /// Gets or sets the Room Name(s) to receive notification.
         /// </summary>
-        [ReflectorProperty("room-name")]
-        public string RoomName { get; set; }
+        /// <remarks>Can be a semi-colon (;) delimited list of rooms to receive notification.</remarks>
+        [ReflectorProperty("room-names")]
+        public string RoomNames { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether or not a notification should only be sent on error.
@@ -61,8 +62,15 @@ namespace ccnet.hipchat.v2.plugin
                 var hipchatClient =
                     new HipChatClient(new ApiConnection(new Credentials(this.AuthToken)));
 
-                // Wait for the message to be posted
-                hipchatClient.Rooms.SendNotificationAsync(this.RoomName, evaluatedIntergration.Item2).Wait();
+                // Support for publishing to multiple rooms
+                var roomNotifications =
+                    this.RoomNames
+                        .Split(';')
+                        .Select(currentRoom => hipchatClient.Rooms.SendNotificationAsync(currentRoom, evaluatedIntergration.Item2))
+                        .ToArray();
+
+                // Wait for the messages to be posted before returning
+                System.Threading.Tasks.Task.WaitAll(roomNotifications);
             }
         }
 

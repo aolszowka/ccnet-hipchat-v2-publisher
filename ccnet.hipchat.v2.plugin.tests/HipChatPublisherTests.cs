@@ -21,6 +21,31 @@ namespace ccnet.hipchat.v2.plugin.tests
     [TestFixture]
     public class HipChatPublisherTests
     {
+        /// <summary>
+        ///   Deep Integration Test, this will actually invoke the publisher
+        /// and requires that you have an HipChat OAuth2 Token and rooms setup.
+        /// </summary>
+        /// <param name="integrationResult">An Integration Result.</param>
+        /// <param name="notifyOnlyOnError">Should we notify only on error?</param>
+        /// <param name="expected">[NOT USED] This is a hack so we can reuse our test cases from another test suite.</param>
+        [TestCaseSource(typeof(EvaluateIntegration_ValidInput_Tests)), Explicit("Deep Integration Test"), Ignore("Disabled as it is noisy")]
+        public void IntegrationTest(IIntegrationResult integrationResult, bool notifyOnlyOnError, Tuple<bool, SendNotification> expected)
+        {
+            // DON'T COMMIT THE BELOW
+            string authToken = "dontevercheckinyourauthkey";
+            string rooms = "dontevercheckinaroomname";
+            // DON'T COMMIT THE ABOVE
+
+            HipChatPublisher hcPublisher = new HipChatPublisher();
+            hcPublisher.AuthToken = authToken;
+            hcPublisher.RoomNames = rooms;
+            hcPublisher.NotifyOnlyOnError = notifyOnlyOnError;
+
+            hcPublisher.Run(integrationResult);
+
+            Assert.True(true);
+        }
+
         [TestCaseSource(typeof(EvaluateIntegration_ValidInput_Tests)), Ignore("Broken because third party does not implement Equals")]
         public void EvaluateIntegration_ValidInput(IIntegrationResult integrationResult, bool notifyOnlyOnError, Tuple<bool, SendNotification> expected)
         {
