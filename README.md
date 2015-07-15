@@ -3,11 +3,13 @@ A Simple CruiseControl.NET HipChat v2 Publisher.
 
 Currently it will send a room notification for three states:
 
+```
 [FAILED] Quick-CI Build Log. Breakers: @aceo
 [FIXED] Quick-CI
 [SUCCESSFUL] Quick-CI
+```
 
-The [FAILED] state will link the Build Log to the Project URL specified in the CruiseControl.NET Project Configuration, and append an @ to any of the build failure users. However notifications do not work, see the Known Issues section for more.
+The ```[FAILED]``` state will link the Build Log to the Project URL specified in the CruiseControl.NET Project Configuration, and append an @ to any of the build failure users. However notifications do not work, see the Known Issues section for more.
 
 ### Requirements
 * This publisher is built for CruiseControl.NET 1.4.4SP1. See the section Hacking on how to upgrade this.
