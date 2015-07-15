@@ -30,7 +30,7 @@ The ```[FAILED]``` state will link the Build Log to the Project URL specified in
 </hipchat>
 ```
 
-Note that the `notify-only-on-error` is optional and by default is false. However it is recommended that you set this value to true if you have a lot of builds and don't want spam. When this value is set to true any successful build is not broadcast, **HOWEVER** "Fixed" builds are still broadcast (IE builds which were previously failing but are now passing) even with this setting off.
+Note that the `notify-only-on-error` is optional and by default is ```false```. However it is recommended that you set this value to ```true``` if you have a lot of builds and don't want spam. When this value is set to ```true``` only failures are broadcast, additionally "Fixed" builds are also broadcast (IE builds which were previously failing but are now passing), this seemed to be the best compromise. If you don't like this behavior check out the hacking section for information on how to turn this off.
 
 ### Common Issues
 Some versions of CruiseControl.NET are not built against the .NET 4.5 Framework (which uses the 4.0 runtime) because of this it cannot load any plug-ins that are build against Framework versions greater than 3.5 (the .NET 2.0 runtime). The fix to this is to modify the App.config of CruiseControl to advertise as supporting the .NET 4.0 runtime. This process is documented on MSDN in the [How to: Configure an App to Support .NET Framework 4 or 4.5](https://msdn.microsoft.com/en-us/library/jj152935%28v=vs.110%29.aspx).
@@ -67,7 +67,10 @@ The next common change will be changing the format of the messages that are prin
 * ```IntegrationFixedMessage```
 * ```IntegrationSuccessfulMessage```
 
-These return a HipChat.NET ```SendNotification``` object which closely mimics the v2 API for [Send room notification](https://www.hipchat.com/docs/apiv2/method/send_room_notification) the message format is defaulted to HTML and as per the documentation you can use basic HTML formatting. You are also passed a CruiseControl.NET ```IIntegrationResult``` which should allow you to extract anything of interest from the Current Integration.
+These return a HipChat.NET ```SendNotification``` object which closely mimics the v2 API for [Send room notification](https://www.hipchat.com/docs/apiv2/method/send_room_notification) the message format is defaulted to HTML and as per the documentation you can use basic HTML formatting. You are also passed a CruiseControl.NET ```IIntegrationResult``` which should allow you to extract anything of interest from the Current Integration. A possible change might be to use a different color for fixed integrations to more quickly call them out from a successful one.
+
+#### Notifying Only On Error
+Currently when Notify Only On Error is ```true``` you only get notifications when an Intergration fails or is fixed (IE was previously failing). If you want to change this behavior take a look at ```EvaluateIntegration(IIntegrationResult, bool)``` this function is expected to return a ```Tuple<bool, SendNotification>``` where the first element dictates whether or not to post the second element to the room.
 
 ### Known Issues
 * The ``@Mentions`` does not work, as far as I am aware this is a limitation of the HipChat API.
