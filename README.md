@@ -25,7 +25,7 @@ The ```[FAILED]``` state will link the Build Log to the Project URL specified in
 ```xml
 <hipchat>
   <auth-token>OAuthTokenHere</auth-token>
-  <room-names>NameOfTheRoomToPublishTo;MultipleRoomsAreSupported;DelimitedBySemiColon</room-names>
+  <room-names>NameOfRoomToPublishTo;MultiRoom;DelimitedBySemiColon</room-names>
   <notify-only-on-error>true</notify-only-on-error>
 </hipchat>
 ```
@@ -84,7 +84,7 @@ Check [Issues/known-issue](https://github.com/aolszowka/ccnet-hipchat-v2-publish
 ### TODO
 Check the [Issues/enhacement](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/labels/enhancement) for more.
 
-* [Support Publishing to Multiple Rooms](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/4)
+
 * [Support Customizing the Failure/Fixed/Success Messages](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/5)
 * [Support Publishing to Custom HipChat URLs](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/6)
 * [Support Cross Reference to Convert Failure Users to HipChat Names](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/7)
