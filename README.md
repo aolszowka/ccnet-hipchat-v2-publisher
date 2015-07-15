@@ -73,15 +73,19 @@ These return a HipChat.NET ```SendNotification``` object which closely mimics th
 Currently when Notify Only On Error is ```true``` you only get notifications when an Intergration fails or is fixed (IE was previously failing). If you want to change this behavior take a look at ```EvaluateIntegration(IIntegrationResult, bool)``` this function is expected to return a ```Tuple<bool, SendNotification>``` where the first element dictates whether or not to post the second element to the room.
 
 ### Known Issues
-* The ``@Mentions`` does not work, as far as I am aware this is a limitation of the HipChat API.
-* Only CruiseControl.NET 1.4.4SP1 is Supported Out of the Box; this is by design as mentioned several times.
+Check [Issues/known-issue](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/labels/known-issue) for more.
+
+* [``@Mentions`` do not work](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/1)
+* [Only CruiseControl.NET 1.4.4SP1 is Supported Out of the Box](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/2)
+* [Installing The Plugin Causes A System.BadImageFormatException](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/3)
 
 ### TODO
-* Support Publishing to Multiple Rooms - (Forth coming)
-* Support Customizing the Failure/Fixed/Success Messages (Maybe)
-* Support Publishing to Custom HipChat URLs - (Maybe)
-* Support Cross Reference to Convert Failure Users to HipChat Names - (Probably not)
-* Support Multiple CruiseControl.NET Versions - (Look to forks for this, unless I need to support a new version of Cruise control.NET I am unlikely to do this)
+Check the [Issues/enhacement](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/labels/enhancement) for more.
+
+* [Support Publishing to Multiple Rooms](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/4)
+* [Support Customizing the Failure/Fixed/Success Messages](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/5)
+* [Support Publishing to Custom HipChat URLs](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/6)
+* [Support Cross Reference to Convert Failure Users to HipChat Names](https://github.com/aolszowka/ccnet-hipchat-v2-publisher/issues/7)
 
 ## Copyright & License
 * ccnet-hipchat-v2-publisher Copyright 2015 Ace Olszowka [MIT License](LICENSE.txt)
