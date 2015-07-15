@@ -26,11 +26,11 @@ The ```[FAILED]``` state will link the Build Log to the Project URL specified in
 <hipchat>
   <auth-token>OAuthTokenHere</auth-token>
   <room-name>NameOfTheRoomToPublishTo</room-name>
-  <NotifyOnlyOnError>true</NotifyOnlyOnError>
+  <notify-only-on-error>true</notify-only-on-error>
 </hipchat>
 ```
 
-Note that the `NotifyOnlyOnError` is optional and by default is false. However it is recommended that you set this value to true if you have a lot of builds and don't want spam. When this value is set to true any successful build is not broadcast, **HOWEVER** "Fixed" builds are still broadcast (IE builds which were previously failing but are now passing) even with this setting off.
+Note that the `notify-only-on-error` is optional and by default is false. However it is recommended that you set this value to true if you have a lot of builds and don't want spam. When this value is set to true any successful build is not broadcast, **HOWEVER** "Fixed" builds are still broadcast (IE builds which were previously failing but are now passing) even with this setting off.
 
 ### Common Issues
 Some versions of CruiseControl.NET are not built against the .NET 4.5 Framework (which uses the 4.0 runtime) because of this it cannot load any plug-ins that are build against Framework versions greater than 3.5 (the .NET 2.0 runtime). The fix to this is to modify the App.config of CruiseControl to advertise as supporting the .NET 4.0 runtime. This process is documented on MSDN in the [How to: Configure an App to Support .NET Framework 4 or 4.5](https://msdn.microsoft.com/en-us/library/jj152935%28v=vs.110%29.aspx).
