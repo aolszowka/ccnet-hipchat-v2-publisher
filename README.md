@@ -78,4 +78,9 @@ These return a HipChat.NET ```SendNotification``` object which closely mimics th
 * Support Customizing the Failure/Fixed/Success Messages (Maybe)
 * Support Publishing to Custom HipChat URLs - (Maybe)
 * Support Cross Reference to Convert Failure Users to HipChat Names - (Probably not)
-* Support Multiple CruiseControl.NET Versions - (Look to forks for this, unless I need to support a new version of Cruise control.NET I am unlikely to do this) 
+* Support Multiple CruiseControl.NET Versions - (Look to forks for this, unless I need to support a new version of Cruise control.NET I am unlikely to do this)
+
+## Copyright & License
+* ccnet-hipchat-v2-publisher Copyright 2015 Ace Olszowka [MIT License](LICENSE.txt)
+* HipChat.NET Copyright 2014 Chris Kirby [MIT License](https://github.com/sirkirby/hipchat.net/blob/master/LICENSE.txt)
+* CruiseControl.NET Copyright 2005 ThoughtWorks, Inc [ThoughtWorks Open Source Software License](https://raw.githubusercontent.com/ccnet/CruiseControl.NET/0ced9ffb9f651474dd09a38e756064c8ebd5e220/license.txt)
