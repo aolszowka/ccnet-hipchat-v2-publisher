@@ -1,3 +1,5 @@
+This Project is no longer maintained due to HipChat Being Purchased By Slack and HipChat Being Discontinued on 02/2019 https://www.atlassian.com/blog/announcements/new-atlassian-slack-partnership
+
 # ccnet-hipchat-v2-publisher
 A Simple CruiseControl.NET HipChat v2 Publisher.
 
